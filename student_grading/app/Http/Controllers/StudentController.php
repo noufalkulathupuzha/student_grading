@@ -51,7 +51,12 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        $user_id = intval($student->user_id);
+        $id = intval(request()->user()->id);
+        if ($id !== $user_id) {
+            abort(403);
+        }
+        return view('student.edit', ['student' => $student]);
     }
 
     /**
