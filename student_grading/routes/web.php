@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MarkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 
@@ -14,6 +15,10 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth','verified'])->group(function(){
     Route::resource('student', StudentController::class);
+});
+Route::middleware(['auth','verified'])->group(function(){
+    Route::resource('marks', MarkController::class);
+    
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
