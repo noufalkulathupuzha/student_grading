@@ -2,7 +2,7 @@
     <div class="p-6">
         <h2 class="text-3xl font-bold mb-4 text-gray-800">Student Details</h2>
         <h2 class="text-xl font-semibold mb-4 text-gray-800">
-            Total Mark: 
+            Total Mark:
             <span class="bg-blue-500 text-white px-3 py-1 rounded">{{ $totalMark }}</span>
         </h2>
         <div class="flex justify-center">
@@ -40,9 +40,16 @@
                         class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Edit</a>
                 </div>
                 <div class="flex justify-center space-x-4 pb-6">
-                    <a href="{{ route('marks.create', ['student' => $student]) }}"
-                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition-colors duration-300 ease-in-out">Add
-                        Marks</a>
+                    
+                    @if (isset($mark))
+                        <a href="{{ route('marks.show', $mark) }}"
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition-colors duration-300 ease-in-out">Show
+                            Marks</a>
+                            @else
+                            <a href="{{ route('marks.create', ['student' => $student]) }}"
+                                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition-colors duration-300 ease-in-out">Add
+                                Marks</a>
+                    @endif
                 </div>
 
 
