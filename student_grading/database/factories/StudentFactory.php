@@ -17,7 +17,13 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name'=>fake()->name(20),
+            'course'=>fake()->realText(20),
+            'branch'=>fake()->realText(30),
+            'registration_number'=>fake()->randomLetter(),
+            'date_of_birth'=>fake()->date('d-m-Y'),
+            'address'=>fake()->address(),
+            'user_id'=>1,
         ];
     }
 }
