@@ -30,15 +30,18 @@
                     </div>
                 </div>
                 <div class="flex justify-between px-6 pb-6">
-                    <a href="{{ route('student.index') }}" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Cancel</a>
-                    <a href="{{ route('student.edit', $student) }}" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Edit</a>
+                    <a href="{{ route('student.index') }}"
+                        class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Cancel</a>
+                    <a href="{{ route('student.edit', $student) }}"
+                        class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Edit</a>
                 </div>
                 <div class="flex justify-center space-x-4 pb-6">
-                    <a href="{{ route('marks.create', ['student'=>$student]) }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition-colors duration-300 ease-in-out">Add Marks</a>
-                    <a href="{{ route('marks.index', ['student'=>$student]) }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition-colors duration-300 ease-in-out">Show Marks</a>
+                    <a href="{{ route('marks.create', ['student' => $student]) }}"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition-colors duration-300 ease-in-out">Add
+                        Marks</a>
                 </div>
-                
-                
+
+
             </div>
         </div>
     </div>

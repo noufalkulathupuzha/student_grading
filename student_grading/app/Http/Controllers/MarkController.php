@@ -23,7 +23,16 @@ class MarkController extends Controller
     {
         $student_id = request('student');
         $student = Student::find(request()->student);
+        $existingMark = Mark::where('student_id',  $student_id)->first();
 
+        // If a mark with the same student ID exists, return to the mark view
+        if ($existingMark) {
+
+            // Calculate total marks
+            $total = $existingMark->chemistry + $existingMark->english + $existingMark->malayalam + $existingMark->maths;
+
+            return view('mark.show', ['marks' => $existingMark, 'student' => $student, 'total' => $total]);
+        }
         return view('mark.create', ['student_id' => $student_id, 'student' => $student]);
     }
 
@@ -47,9 +56,10 @@ class MarkController extends Controller
 
         // Check if a mark with the same student ID already exists
         $existingMark = Mark::where('student_id', $data['student_id'])->first();
-        // Find the student associated with the mark
+
         // If a mark with the same student ID exists, return to the mark view
         if ($existingMark) {
+            // Find the student associated with the mark
             $student = Student::find($existingMark->student_id);
 
             // Calculate total marks

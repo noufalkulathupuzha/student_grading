@@ -1,49 +1,49 @@
 <x-app-layout>
-    <div class="flex justify-center align-items-center">
-        <div class="mr-5">
-            <a href="{{ route('student.show', $student) }}">
-                <svg class="h-8 w-8 text-red-500" width="24" height="24" viewBox="0 0 24 24"
-                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <line x1="5" y1="12" x2="11" y2="18" />
-                    <line x1="5" y1="12" x2="11" y2="6" />
-                </svg>
-            </a>
+    <div class="flex justify-between items-center m-2">
+        <div class="flex items-center">
+            <div class="mr-5">
+                <a href="{{ route('student.show', $student) }}" class="text-red-500 hover:text-red-600">
+                    <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <line x1="5" y1="12" x2="11" y2="18" />
+                        <line x1="5" y1="12" x2="11" y2="6" />
+                    </svg>
+                </a>
+            </div>
+            <div>
+                <span class="text-lg font-semibold">Student Name: </span><span class="font-semibold">{{ $student->name }}</span>
+            </div>
         </div>
         <div>
-            <span>Student Name : </span><span class="font-bold">{{ $student->name }}</span>
-            <span>Total Marks: </span><span class="font-bold">{{ $total }}</span>
+            <span class="text-lg font-semibold">Total Marks: </span><span class="font-semibold">{{ $total }}</span>
         </div>
-        <table class="table border border-separate border-red-400 m-5 rounded p-5">
-            <thead class="table-header-group">
-                <tr class="table-row border-b-2">
-                    <th>Subject</th>
-                    <th>Marks</th>
+    </div>
+    <div class="flex justify-center mt-8">
+        <table class="border border-separate border-red-400 rounded p-5">
+            <thead class="bg-red-500 text-white">
+                <tr>
+                    <th class="p-3">Subject</th>
+                    <th class="p-3">Marks</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>English</td>
-                    <td class="text-right">{{ $marks->english }}</td>
+                    <td class="p-3">English</td>
+                    <td class="p-3 text-right">{{ $marks->english }}</td>
                 </tr>
-            </tbody>
-            <tbody>
                 <tr>
-                    <td>Malayalam</td>
-                    <td class="text-right">{{ $marks->malayalam }}</td>
+                    <td class="p-3">Malayalam</td>
+                    <td class="p-3 text-right">{{ $marks->malayalam }}</td>
                 </tr>
-            </tbody>
-            <tbody>
                 <tr>
-                    <td>Maths</td>
-                    <td class="text-right">{{ $marks->maths }}</td>
+                    <td class="p-3">Maths</td>
+                    <td class="p-3 text-right">{{ $marks->maths }}</td>
                 </tr>
-            </tbody>
-            <tbody>
                 <tr>
-                    <td>Chemistry</td>
-                    <td class="text-right">{{ $marks->chemistry }}</td>
+                    <td class="p-3">Chemistry</td>
+                    <td class="p-3 text-right">{{ $marks->chemistry }}</td>
                 </tr>
             </tbody>
         </table>
