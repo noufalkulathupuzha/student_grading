@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
+            $table->date('date_of_birth');
+            $table->string('registration_number');
+            $table->string('course');
+            $table->string('branch');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
