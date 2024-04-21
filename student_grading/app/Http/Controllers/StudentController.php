@@ -22,7 +22,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('student.create');
     }
 
     /**
@@ -30,7 +30,18 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'course' => ['required', 'string'],
+            'branch' => ['string'],
+            'address' => ['string'],
+            'date_of_birth' => ['required'],
+            'registration_number' => ['required']
+
+        ]);
+        $data['user_id'] = $request->user()->id;
+        $student = Student::create($data);
+        return to_route('student.index')->with('message', 'Student ' . $student->name . ' Created');
     }
 
     /**
