@@ -59,6 +59,8 @@ class StudentController extends Controller
         $mark = Mark::where('student_id',  $student->id)->first();
         if ($mark) {
             $totalMark = $mark->chemistry + $mark->english + $mark->malayalam + $mark->maths;
+              return view('student.show', ['student' => $student, 'totalMark' => $totalMark,'mark'=>$mark]);
+
         }
 
         return view('student.show', ['student' => $student, 'totalMark' => $totalMark]);
