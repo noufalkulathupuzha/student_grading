@@ -64,7 +64,22 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $user_id = intval($student->user_id);
+        $id = intval($request->user()->id);
+        if ($id !== $user_id) {
+            abort(403);
+        }
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'course' => ['required', 'string'],
+            'branch' => ['string'],
+            'address' => ['string'],
+            'date_of_birth' => ['required'],
+            'registration_number' => ['required']
+        ]);
+
+        $student->update($data);
+        return to_route('student.index')->with('message', 'Student ' . $student->name . ' Updated Successfully');
     }
 
     /**
