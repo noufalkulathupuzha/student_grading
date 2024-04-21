@@ -88,7 +88,12 @@ class MarkController extends Controller
      */
     public function show(Mark $mark)
     {
-        //
+        // Find the student associated with the mark
+        $student = Student::find($mark->student_id);
+        // Calculate total marks
+        $total = $mark->chemistry + $mark->english + $mark->malayalam + $mark->maths;
+        return view('mark.show', ['marks' => $mark, 'student' => $student, 'total' => $total]);
+
     }
 
     /**
