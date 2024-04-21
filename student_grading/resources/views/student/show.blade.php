@@ -1,6 +1,10 @@
 <x-app-layout>
     <div class="p-6">
-        <h2 class="text-2xl font-semibold mb-6">Student Details</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Student Details</h2>
+        <h2 class="text-xl font-semibold mb-4 text-gray-800">
+            Total Mark: 
+            <span class="bg-blue-500 text-white px-3 py-1 rounded">{{ $totalMark }}</span>
+        </h2>
         <div class="flex justify-center">
             <div class="bg-white shadow-md rounded-lg w-96">
                 <div class="p-6">

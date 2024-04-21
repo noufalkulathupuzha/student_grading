@@ -55,7 +55,13 @@ class StudentController extends Controller
         if ($id !== $user_id) {
             abort(403);
         }
-        return view('student.show', ['student' => $student]);
+        $totalMark = 0;
+        $mark = Mark::where('student_id',  $student->id)->first();
+        if ($mark) {
+            $totalMark = $mark->chemistry + $mark->english + $mark->malayalam + $mark->maths;
+        }
+
+        return view('student.show', ['student' => $student, 'totalMark' => $totalMark]);
     }
 
     /**
@@ -105,7 +111,7 @@ class StudentController extends Controller
             abort(403);
         }
         $mark = Mark::where('student_id',  $student->id)->first();
-        if($mark){
+        if ($mark) {
             $mark->delete();
         }
         $student->delete();
