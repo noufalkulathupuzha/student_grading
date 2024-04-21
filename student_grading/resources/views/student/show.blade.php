@@ -1,3 +1,40 @@
-<div>
-    <!-- Always remember that you are absolutely unique. Just like everyone else. - Margaret Mead -->
-</div>
+<x-app-layout>
+    <div class="p-6">
+        <h2 class="text-2xl font-semibold mb-6">Student Details</h2>
+        <div class="flex justify-center">
+            <div class="bg-white shadow-md rounded-lg w-96">
+                <div class="p-6">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Name:</label>
+                        <span class="text-blue-600 font-semibold">{{ $student->name }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Course:</label>
+                        <span class="text-blue-600 font-semibold">{{ $student->course }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Branch:</label>
+                        <span class="text-blue-600 font-semibold">{{ $student->branch }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Address:</label>
+                        <span class="text-blue-600 font-semibold">{{ $student->address }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Date of Birth:</label>
+                        <span class="text-blue-600 font-semibold">{{ $student->date_of_birth }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Registration Number:</label>
+                        <span class="text-blue-600 font-semibold">{{ $student->registration_number }}</span>
+                    </div>
+                </div>
+                <div class="flex justify-between px-6 pb-6">
+                    <a href="{{ route('student.index') }}" class="text-blue-500 hover:underline">Cancel</a>
+                    <a href="{{ route('student.edit', $student) }}" class="text-blue-500 hover:underline">Edit</a>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</x-app-layout>
