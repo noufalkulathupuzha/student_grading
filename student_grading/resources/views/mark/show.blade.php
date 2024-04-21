@@ -1,4 +1,12 @@
 <x-app-layout>
+    @if(isset($message))
+    <div id="session-message-popup" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white p-6 rounded-lg">
+            
+            <h2>{{ $message }}</h2>
+        </div>
+    </div>
+    @endif
     <div class="flex justify-between items-center p-4">
         <div class="flex items-center">
             <div class="mr-3">
@@ -20,7 +28,8 @@
         <div class="flex items-center">
             <span class="text-lg font-semibold">Total Marks:</span>
             <span>{{ $total }}</span>
-            <a href="{{ route('marks.edit', ['mark' => $marks->id]) }}" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Edit</a>
+            <a href="{{ route('marks.edit', ['mark' => $marks->id]) }}"
+                class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Edit</a>
         </div>
     </div>
     <div class="flex justify-center mt-8">

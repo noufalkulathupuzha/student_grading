@@ -30,8 +30,8 @@ class MarkController extends Controller
 
             // Calculate total marks
             $total = $existingMark->chemistry + $existingMark->english + $existingMark->malayalam + $existingMark->maths;
-
-            return view('mark.show', ['marks' => $existingMark, 'student' => $student, 'total' => $total]);
+            $message =  'Student ' . $student->name . '\'s mark already Added ';
+            return view('mark.show', ['marks' => $existingMark, 'student' => $student, 'total' => $total, 'message'=>$message]);
         }
         return view('mark.create', ['student_id' => $student_id, 'student' => $student]);
     }
@@ -64,8 +64,8 @@ class MarkController extends Controller
 
             // Calculate total marks
             $total = $existingMark->chemistry + $existingMark->english + $existingMark->malayalam + $existingMark->maths;
-
-            return view('mark.show', ['marks' => $existingMark, 'student' => $student, 'total' => $total]);
+            $message =  'Student ' . $student->name . '\'s mark already Added ';
+            return view('mark.show', ['marks' => $existingMark, 'student' => $student, 'total' => $total, 'message'=>$message]);
         }
 
         // If no existing mark found, create a new mark
@@ -76,9 +76,9 @@ class MarkController extends Controller
 
         // Calculate total marks
         $total = $marks->chemistry + $marks->english + $marks->malayalam + $marks->maths;
-
+        $message = 'Mark added sucessfully';
         // Return the view with the created marks, student, and total marks
-        return view('mark.show', ['marks' => $marks, 'student' => $student, 'total' => $total]);
+        return view('mark.show', ['marks' => $marks, 'student' => $student, 'total' => $total, 'message'=>$message]);
     }
 
 
@@ -119,12 +119,13 @@ class MarkController extends Controller
             'chemistry' => ['required'],
         ]);
         $mark->update($data);
-         // Find the student associated with the mark
+        // Find the student associated with the mark
         $student = Student::find($mark->student_id);
-         // Calculate total marks
-         $total = $mark->chemistry + $mark->english + $mark->malayalam + $mark->maths;
-        return view('mark.show', ['marks' => $mark, 'student' => $student, 'total' => $total]);
-        
+        // Calculate total marks
+        $total = $mark->chemistry + $mark->english + $mark->malayalam + $mark->maths;
+        $message = 'Mark of ' . $student->name . ' Updated';
+
+        return view('mark.show', ['marks' => $mark, 'student' => $student, 'total' => $total, 'message' => $message]);
     }
 
     /**
