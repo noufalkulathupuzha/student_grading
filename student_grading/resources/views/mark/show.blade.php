@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="flex justify-between items-center m-2">
+    <div class="flex justify-between items-center p-4">
         <div class="flex items-center">
-            <div class="mr-5">
+            <div class="mr-3">
                 <a href="{{ route('student.show', $student) }}" class="text-red-500 hover:text-red-600">
                     <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -13,37 +13,40 @@
                 </a>
             </div>
             <div>
-                <span class="text-lg font-semibold">Student Name: </span><span class="font-semibold">{{ $student->name }}</span>
+                <span class="text-lg font-semibold">Student Name:</span>
+                <span>{{ $student->name }}</span>
             </div>
         </div>
-        <div>
-            <span class="text-lg font-semibold">Total Marks: </span><span class="font-semibold">{{ $total }}</span>
+        <div class="flex items-center">
+            <span class="text-lg font-semibold">Total Marks:</span>
+            <span>{{ $total }}</span>
+            <a href="{{ route('marks.edit', ['mark' => $marks->id]) }}" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Edit</a>
         </div>
     </div>
     <div class="flex justify-center mt-8">
-        <table class="border border-separate border-red-400 rounded p-5">
-            <thead class="bg-red-500 text-white">
+        <table class="border border-gray-300 rounded-lg shadow-md">
+            <thead class="bg-blue-500 text-white"> <!-- Updated color classes -->
                 <tr>
-                    <th class="p-3">Subject</th>
-                    <th class="p-3">Marks</th>
+                    <th class="px-6 py-3">Subject</th>
+                    <th class="px-6 py-3">Marks</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="p-3">English</td>
-                    <td class="p-3 text-right">{{ $marks->english }}</td>
+                    <td class="px-6 py-4">English</td>
+                    <td class="px-6 py-4 text-right">{{ $marks->english }}</td>
                 </tr>
                 <tr>
-                    <td class="p-3">Malayalam</td>
-                    <td class="p-3 text-right">{{ $marks->malayalam }}</td>
+                    <td class="px-6 py-4">Malayalam</td>
+                    <td class="px-6 py-4 text-right">{{ $marks->malayalam }}</td>
                 </tr>
                 <tr>
-                    <td class="p-3">Maths</td>
-                    <td class="p-3 text-right">{{ $marks->maths }}</td>
+                    <td class="px-6 py-4">Maths</td>
+                    <td class="px-6 py-4 text-right">{{ $marks->maths }}</td>
                 </tr>
                 <tr>
-                    <td class="p-3">Chemistry</td>
-                    <td class="p-3 text-right">{{ $marks->chemistry }}</td>
+                    <td class="px-6 py-4">Chemistry</td>
+                    <td class="px-6 py-4 text-right">{{ $marks->chemistry }}</td>
                 </tr>
             </tbody>
         </table>

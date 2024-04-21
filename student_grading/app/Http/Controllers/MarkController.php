@@ -96,8 +96,15 @@ class MarkController extends Controller
      */
     public function edit(Mark $mark)
     {
-        //
+        $student = Student::find($mark->student_id);
+        $total = $mark->chemistry + $mark->english + $mark->malayalam + $mark->maths;
+        return view('mark.edit', [
+            'marks' => $mark,
+            'student' => $student,
+            'total' => $total,
+        ]);
     }
+
 
     /**
      * Update the specified resource in storage.
