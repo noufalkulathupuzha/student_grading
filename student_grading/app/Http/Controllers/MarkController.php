@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mark;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class MarkController extends Controller
@@ -20,7 +21,10 @@ class MarkController extends Controller
      */
     public function create()
     {
-        //
+        $student_id = request('student');
+        $student = Student::find(request()->student);
+
+        return view('mark.create', ['student_id' => $student_id, 'student' => $student]);
     }
 
     /**
