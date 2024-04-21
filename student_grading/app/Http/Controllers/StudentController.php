@@ -105,7 +105,9 @@ class StudentController extends Controller
             abort(403);
         }
         $mark = Mark::where('student_id',  $student->id)->first();
-        $mark->delete();
+        if($mark){
+            $mark->delete();
+        }
         $student->delete();
 
         return to_route('student.index')->with('message', 'Student Deleted');
