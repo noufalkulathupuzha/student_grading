@@ -98,6 +98,14 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $user_id = intval($student->user_id);
+        $id = intval(request()->user()->id);
+        if ($id !== $user_id) {
+            abort(403);
+        }
+
+        $student->delete();
+
+        return to_route('student.index')->with('message', 'Student Deleted');
     }
 }
