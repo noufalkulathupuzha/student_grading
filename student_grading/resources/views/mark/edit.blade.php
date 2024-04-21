@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="flex justify-center mt-8">
-        <form action="{{ route('marks.update', ['mark' => $marks->id]) }}" method="POST">
+        <form action="{{ route('marks.update', $marks) }}" method="POST">
             @csrf
             @method('PUT')
             <table class="border border-gray-300 rounded-lg shadow-md">

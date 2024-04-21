@@ -111,7 +111,20 @@ class MarkController extends Controller
      */
     public function update(Request $request, Mark $mark)
     {
-        //
+        // Validate the incoming request data
+        $data = $request->validate([
+            'english' => ['required'],
+            'malayalam' => ['required'],
+            'maths' => ['required'],
+            'chemistry' => ['required'],
+        ]);
+        $mark->update($data);
+         // Find the student associated with the mark
+        $student = Student::find($mark->student_id);
+         // Calculate total marks
+         $total = $mark->chemistry + $mark->english + $mark->malayalam + $mark->maths;
+        return view('mark.show', ['marks' => $mark, 'student' => $student, 'total' => $total]);
+        
     }
 
     /**
