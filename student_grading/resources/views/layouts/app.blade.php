@@ -15,6 +15,15 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
+        <div class="flex items-center justify-center">
+            @if(session()->has('message'))
+                <div id="session-message" class="bg-red-500 p-3 flex items-center justify-center w-40 border rounded m-5">
+                    <h2 class="text-white text-center">{{ session('message') }}</h2>
+                </div>
+            @endif
+        </div>
+        
+    </div>
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
