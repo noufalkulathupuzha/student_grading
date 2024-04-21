@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mark;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -103,7 +104,8 @@ class StudentController extends Controller
         if ($id !== $user_id) {
             abort(403);
         }
-
+        $mark = Mark::where('student_id',  $student->id)->first();
+        $mark->delete();
         $student->delete();
 
         return to_route('student.index')->with('message', 'Student Deleted');
