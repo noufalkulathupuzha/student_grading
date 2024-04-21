@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Mark extends Model
 {
     use HasFactory;
+    protected $fillable = ['english', 'malayalam', 'maths', 'chemistry', 'student_id'] ;
 }

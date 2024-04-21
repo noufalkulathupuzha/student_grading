@@ -30,10 +30,48 @@ class MarkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request data
+        $data = $request->validate([
+            'english' => ['required'],
+            'malayalam' => ['required'],
+            'maths' => ['required'],
+            'chemistry' => ['required'],
+        ]);
+
+        // Add the student ID to the data array
+        $data['student_id'] = $request->student;
+
+        // Check if a mark with the same student ID already exists
+        $existingMark = Mark::where('student_id', $data['student_id'])->first();
+        // Find the student associated with the mark
+        // If a mark with the same student ID exists, return to the mark view
+        if ($existingMark) {
+            $student = Student::find($existingMark->student_id);
+
+            // Calculate total marks
+            $total = $existingMark->chemistry + $existingMark->english + $existingMark->malayalam + $existingMark->maths;
+
+            return view('mark.show', ['marks' => $existingMark, 'student' => $student, 'total' => $total]);
+        }
+
+        // If no existing mark found, create a new mark
+        $marks = Mark::create($data);
+
+        // Find the student associated with the mark
+        $student = Student::find($request->student);
+
+        // Calculate total marks
+        $total = $marks->chemistry + $marks->english + $marks->malayalam + $marks->maths;
+
+        // Return the view with the created marks, student, and total marks
+        return view('mark.show', ['marks' => $marks, 'student' => $student, 'total' => $total]);
     }
+
+
 
     /**
      * Display the specified resource.
