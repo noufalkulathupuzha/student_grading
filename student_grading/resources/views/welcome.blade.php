@@ -1,5 +1,5 @@
 <x-landing>
-    <div class="bg-gradient-to-b from-blue-100 to-blue-200 text-white">
+    <div class="bg-gradient-to-b bg-gray-100 text-white">
         <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
             <div class="relative w-full max-w-4xl px-6 lg:max-w-7xl">
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
@@ -14,7 +14,7 @@
 
                 <main class="mt-6">
                     <div class="flex items-center justify-center h-screen">
-                        <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
+                        <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow-md border border-gray-200">
                             <img class="mx-auto h-16 mb-6"
                                 src="https://imresizer.com/_next/image?url=/images/upload-how-to.webp&w=3840&q=75"
                                 alt="Logo">
